@@ -23,10 +23,10 @@ class CashFlowSummary {
       totalExpenses: totalExpenses,
       netFlow: totalIncome - totalExpenses,
       periodStart: periodStart,
-      periodEnd: periodStart,
+      periodEnd: periodEnd,
     );
   }
-  bool get isPositve => netFlow > 0;
+  bool get isPositive => netFlow > 0;
   bool get isNegative => netFlow < 0;
   bool get isBalanced => netFlow == 0;
 }

@@ -35,6 +35,20 @@ class UserDataSource {
     return null;
   }
 
+  Future<UserModel?> getUserById(String userId) async {
+    final db = await _db;
+    final maps = await db.query(
+      DatabaseConstants.tableUser,
+      where: '${DatabaseConstants.columnUserId} = ?',
+      whereArgs: [userId],
+      limit: 1,
+    );
+    if (maps.isNotEmpty) {
+      return UserModel.fromMap(maps.first);
+    }
+    return null;
+  }
+
   Future<String?> getPasswordHash(String username) async {
     final db = await _db;
     final maps = await db.query(
