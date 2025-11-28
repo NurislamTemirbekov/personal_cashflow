@@ -1,6 +1,8 @@
-import 'package:cash_flow/domain/entities/category.dart';
-import 'package:cash_flow/domain/repositories/category_repository.dart';
-import 'package:cash_flow/data/datasources/local/category_datasource.dart';
+
+
+import '../../domain/entities/category.dart';
+import '../../domain/repositories/category_repository.dart';
+import '../datasources/local/category_datasource.dart';
 
 class CategoryRepositoryImpl implements CategoryRepository {
   final CategoryDatasource _dataSource;

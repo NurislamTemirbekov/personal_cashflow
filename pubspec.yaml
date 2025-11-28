@@ -35,6 +35,8 @@ dependencies:
   uuid: ^4.5.2
 # Password hashing
   crypto: ^3.0.7
+# dependency injection
+  get_it: ^8.0.2
 
 dev_dependencies:
   flutter_test:
