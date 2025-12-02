@@ -1,3 +1,4 @@
+import '../../entities/category.dart';
 import '../../repositories/category_repository.dart';
 
 class GetCategories {
@@ -5,7 +6,7 @@ class GetCategories {
 
   final CategoryRepository _repository;
 
-  Future<void> call ()async {
-    await _repository.getCategories();
+  Future<List<Category>> call() async {
+    return await _repository.getCategories();
   }
 }

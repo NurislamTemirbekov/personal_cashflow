@@ -88,13 +88,6 @@ class AppDatabase {
         DatabaseConstants.columnCategoryCreatedAt: now,
       },
       {
-        DatabaseConstants.columnCategoryId: 'income_freelance',
-        DatabaseConstants.columnCategoryName: 'Freelance',
-        DatabaseConstants.columnCategoryIcon: '💰',
-        DatabaseConstants.columnCategoryType: DatabaseConstants.typeIncome,
-        DatabaseConstants.columnCategoryCreatedAt: now,
-      },
-      {
         DatabaseConstants.columnCategoryId: 'income_investment',
         DatabaseConstants.columnCategoryName: 'Investment',
         DatabaseConstants.columnCategoryIcon: '📈',
@@ -105,13 +98,6 @@ class AppDatabase {
 
     final expenseCategories = [
       {
-        DatabaseConstants.columnCategoryId: 'expense_food',
-        DatabaseConstants.columnCategoryName: 'Food',
-        DatabaseConstants.columnCategoryIcon: '🍔',
-        DatabaseConstants.columnCategoryType: DatabaseConstants.typeExpense,
-        DatabaseConstants.columnCategoryCreatedAt: now,
-      },
-      {
         DatabaseConstants.columnCategoryId: 'expense_transport',
         DatabaseConstants.columnCategoryName: 'Transport',
         DatabaseConstants.columnCategoryIcon: '🚗',
@@ -119,9 +105,37 @@ class AppDatabase {
         DatabaseConstants.columnCategoryCreatedAt: now,
       },
       {
-        DatabaseConstants.columnCategoryId: 'expense_shopping',
-        DatabaseConstants.columnCategoryName: 'Shopping',
-        DatabaseConstants.columnCategoryIcon: '🛍️',
+        DatabaseConstants.columnCategoryId: 'expense_investment',
+        DatabaseConstants.columnCategoryName: 'Investment',
+        DatabaseConstants.columnCategoryIcon: '📈',
+        DatabaseConstants.columnCategoryType: DatabaseConstants.typeExpense,
+        DatabaseConstants.columnCategoryCreatedAt: now,
+      },
+      {
+        DatabaseConstants.columnCategoryId: 'expense_education',
+        DatabaseConstants.columnCategoryName: 'Education',
+        DatabaseConstants.columnCategoryIcon: '📚',
+        DatabaseConstants.columnCategoryType: DatabaseConstants.typeExpense,
+        DatabaseConstants.columnCategoryCreatedAt: now,
+      },
+      {
+        DatabaseConstants.columnCategoryId: 'expense_foods',
+        DatabaseConstants.columnCategoryName: 'Foods',
+        DatabaseConstants.columnCategoryIcon: '🍔',
+        DatabaseConstants.columnCategoryType: DatabaseConstants.typeExpense,
+        DatabaseConstants.columnCategoryCreatedAt: now,
+      },
+      {
+        DatabaseConstants.columnCategoryId: 'expense_gym',
+        DatabaseConstants.columnCategoryName: 'Gym',
+        DatabaseConstants.columnCategoryIcon: '💪',
+        DatabaseConstants.columnCategoryType: DatabaseConstants.typeExpense,
+        DatabaseConstants.columnCategoryCreatedAt: now,
+      },
+      {
+        DatabaseConstants.columnCategoryId: 'expense_clothes',
+        DatabaseConstants.columnCategoryName: 'Clothes',
+        DatabaseConstants.columnCategoryIcon: '👕',
         DatabaseConstants.columnCategoryType: DatabaseConstants.typeExpense,
         DatabaseConstants.columnCategoryCreatedAt: now,
       },
@@ -129,6 +143,13 @@ class AppDatabase {
         DatabaseConstants.columnCategoryId: 'expense_bills',
         DatabaseConstants.columnCategoryName: 'Bills',
         DatabaseConstants.columnCategoryIcon: '💳',
+        DatabaseConstants.columnCategoryType: DatabaseConstants.typeExpense,
+        DatabaseConstants.columnCategoryCreatedAt: now,
+      },
+      {
+        DatabaseConstants.columnCategoryId: 'expense_debts',
+        DatabaseConstants.columnCategoryName: 'Debts',
+        DatabaseConstants.columnCategoryIcon: '💸',
         DatabaseConstants.columnCategoryType: DatabaseConstants.typeExpense,
         DatabaseConstants.columnCategoryCreatedAt: now,
       },

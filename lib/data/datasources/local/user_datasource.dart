@@ -13,8 +13,8 @@ class UserDataSource {
     await db.insert(
       DatabaseConstants.tableUser,
       {
-        ...user.toMap(),
-        DatabaseConstants.columnPasswordHash: passwordHash,
+      ...user.toMap(),
+      DatabaseConstants.columnPasswordHash: passwordHash,
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );

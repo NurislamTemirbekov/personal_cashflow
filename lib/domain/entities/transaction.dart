@@ -5,13 +5,13 @@ enum TransactionType {
 
 class Transaction {
   final String id;
-  final double amount;
+  final double amount; 
   final String description;
   final DateTime date;
   final String categoryId;
   final TransactionType type;
   final String userId;
-  final DateTime createdAt;
+  final DateTime createdAt; 
 
   Transaction({
     required this.id,

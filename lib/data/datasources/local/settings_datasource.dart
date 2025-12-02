@@ -14,7 +14,7 @@ class SettingsDatasource {
 
   Future<String> getLanguage() async {
     final prefs = await _prefs;
-    return prefs.getString(_keyLanguage) ?? 'en';
+    return prefs.getString(_keyLanguage) ?? 'en'; 
   }
 
   Future<bool> saveAvatarPath(String avatarPath) async {

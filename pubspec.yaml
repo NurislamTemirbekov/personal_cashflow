@@ -37,6 +37,11 @@ dependencies:
   crypto: ^3.0.7
 # dependency injection
   get_it: ^8.0.2
+# printing
+  printing: ^5.14.2
+  pdf: ^3.11.3
+# signature
+  signature: ^5.4.0
 
 dev_dependencies:
   flutter_test:
@@ -48,8 +53,22 @@ dev_dependencies:
   mockito: ^5.5.0
 # code generation
   build_runner: ^2.7.1
+# launcher icons
+  flutter_launcher_icons: ^0.13.1
 
 flutter:
   uses-material-design: true
 
   generate: true
+  
+  assets:
+    - assets/icon/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/app_icon.png"
+  min_sdk_android: 21
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/icon/app_icon.png"
+  remove_alpha_ios: true

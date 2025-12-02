@@ -17,7 +17,7 @@ class CategoryModel {
     required this.createdAtTimestamp,
   });
 
-  factory CategoryModel.fromMap(Map<String, dynamic> map) {
+ factory CategoryModel.fromMap(Map<String, dynamic> map) {
     return CategoryModel(
       id: map[DatabaseConstants.columnCategoryId] as String,
       name: map[DatabaseConstants.columnCategoryName] as String,

@@ -7,7 +7,6 @@ import 'package:cash_flow/domain/repositories/settings_repository.dart';
 import 'package:cash_flow/domain/usecases/auth/logout.dart';
 import 'package:cash_flow/domain/usecases/auth/register.dart';
 import 'package:cash_flow/domain/usecases/category/get_categories.dart';
-import 'package:cash_flow/domain/usecases/settings/change_language.dart';
 import 'package:cash_flow/domain/usecases/settings/update_avatar.dart';
 import 'package:cash_flow/domain/usecases/transaction/add_transaction.dart';
 import 'package:cash_flow/domain/usecases/transaction/get_cash_flow_summary.dart';
@@ -24,9 +23,11 @@ import '../../domain/services/hash_service.dart';
 import '../../domain/usecases/auth/login.dart';
 import '../../domain/usecases/transaction/delete_transaction.dart';
 import '../../domain/usecases/transaction/get_transactions.dart';
+import '../../domain/facades/cash_flow_facade.dart';
 
 final getIt = GetIt.instance;
-void setupServiceLocator() async {
+
+Future<void> setupServiceLocator() async {
   await _setUpCore();
   _setupDatasSource();
   _setupRepositories();
@@ -89,6 +90,16 @@ void _setUpUseCases() {
   );
   getIt.registerLazySingleton<Login>(() => Login(getIt<AuthRepository>()));
   getIt.registerLazySingleton<Logout>(() => Logout(getIt<AuthRepository>()));
-  getIt.registerLazySingleton<ChangeLanguage> (() => ChangeLanguage( getIt<SettingsRepository> ()));
-  getIt.registerLazySingleton<UpdateAvatar> (() => UpdateAvatar( getIt<SettingsRepository> ()));
+  getIt.registerLazySingleton<UpdateAvatar>(
+    () => UpdateAvatar(getIt<SettingsRepository>()),
+  );
+  getIt.registerLazySingleton<CashFlowFacade>(
+    () => CashFlowFacade(
+      addTransaction: getIt<AddTransaction>(),
+      deleteTransaction: getIt<DeleteTransaction>(),
+      getTransactions: getIt<GetTransactions>(),
+      getCashFlowSummary: getIt<GetCashFlowSummary>(),
+      getCategories: getIt<GetCategories>(),
+    ),
+  );
 }

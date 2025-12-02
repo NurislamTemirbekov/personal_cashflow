@@ -10,9 +10,6 @@ class AddTransaction {
     if(transaction.amount <= 0) {
       throw Exception("Amount must be greater than 0");
     }
-    if(transaction.description.isEmpty) {
-      throw Exception("Description cannot be empty");
-    }
     await _repository.addTransaction(transaction);
   }
 }
