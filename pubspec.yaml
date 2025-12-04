@@ -1,5 +1,5 @@
 name: cash_flow
-description: "A new Flutter project."
+description: "Personal finance management app with Telegram Mini App support"
 publish_to: 'none'
 
 version: 1.0.0+1
@@ -10,50 +10,33 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-# localization support
   flutter_localizations:
     sdk: flutter
   cupertino_icons: ^1.0.8
-# state management 
   flutter_bloc: ^9.1.1
-# object comparison
   equatable: ^2.0.7
-# file paths 
   path_provider: ^2.1.5
   path: ^1.9.0
-# local storage
   shared_preferences: ^2.5.3
-# database
   sqflite: ^2.4.2
-# internationalization
   intl: ^0.20.2
-# charts 
   fl_chart: ^1.1.1
-# image handling
   image_picker: ^1.2.1
-# unique ids
   uuid: ^4.5.2
-# Password hashing
   crypto: ^3.0.7
-# dependency injection
   get_it: ^8.0.2
-# printing
   printing: ^5.14.2
   pdf: ^3.11.3
-# signature
   signature: ^5.4.0
+  telegram_web_app: ^0.3.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-# bloc testing
   bloc_test: ^10.0.0
-# mock objects 
   mockito: ^5.5.0
-# code generation
   build_runner: ^2.7.1
-# launcher icons
   flutter_launcher_icons: ^0.13.1
 
 flutter:
