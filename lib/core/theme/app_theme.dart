@@ -11,7 +11,6 @@ class AppTheme {
       secondary: AppColors.primary,
       surface: AppColors.surface,
       error: AppColors.error,
-      background: AppColors.background,
     ),
     scaffoldBackgroundColor: AppColors.background,
     appBarTheme: const AppBarTheme(
@@ -78,7 +77,6 @@ class AppTheme {
       secondary: AppColors.primary,
       surface: const Color(0xFF1E1E1E),
       error: AppColors.error,
-      background: const Color(0xFF121212),
     ),
     scaffoldBackgroundColor: const Color(0xFF121212),
     appBarTheme: const AppBarTheme(

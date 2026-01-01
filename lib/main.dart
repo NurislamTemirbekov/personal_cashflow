@@ -1,30 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart' show kIsWeb, debugPrint;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:cash_flow/core/di/service_locator.dart';
 import 'package:cash_flow/core/theme/app_theme.dart';
 import 'package:cash_flow/core/services/theme_service.dart';
-import 'package:cash_flow/core/services/telegram_service.dart';
-import 'package:cash_flow/presentation/bloc/auth/auth_bloc.dart';
-import 'package:cash_flow/presentation/bloc/auth/auth_event.dart';
-import 'package:cash_flow/presentation/bloc/cashflow/cashflow_bloc.dart';
-import 'package:cash_flow/presentation/bloc/category/category_bloc.dart';
-import 'package:cash_flow/presentation/routes/app_router.dart';
+import 'package:cash_flow/features/auth/ui/bloc/auth_bloc.dart';
+import 'package:cash_flow/features/auth/ui/bloc/auth_event.dart';
+import 'package:cash_flow/features/transactions/ui/bloc/transaction_bloc.dart';
+import 'package:cash_flow/features/categories/ui/bloc/category_bloc.dart';
+import 'package:cash_flow/core/routes/app_router.dart';
 
-_MyAppState? getGlobalAppState() => _globalAppState;
-_MyAppState? _globalAppState;
+dynamic getGlobalAppState() => _globalAppState;
+dynamic _globalAppState;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupServiceLocator();
-  
-  if (kIsWeb) {
-    TelegramService.init().catchError((e) {
-      debugPrint('Telegram init error: $e');
-    });
-  }
-  
   runApp(const MyApp());
 }
 
@@ -43,7 +34,6 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     _globalAppState = this;
     _loadThemeMode();
-    _syncTelegramTheme();
   }
 
   @override
@@ -53,34 +43,10 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> _loadThemeMode() async {
-    if (kIsWeb) {
-      if (mounted) {
-        setState(() {
-          _isDarkMode = false;
-        });
-      }
-      return;
-    }
-    
     final isDark = await ThemeService.isDarkMode();
     if (mounted) {
       setState(() {
         _isDarkMode = isDark;
-      });
-    }
-  }
-
-  void _syncTelegramTheme() {
-    if (kIsWeb) {
-      Future.delayed(const Duration(milliseconds: 1000), () {
-        if (TelegramService.isRunningInTelegram) {
-          try {
-            TelegramService.setHeaderColor(Colors.white);
-            TelegramService.setBackgroundColor(Colors.white);
-          } catch (e) {
-            debugPrint('Error syncing Telegram theme: $e');
-          }
-        }
       });
     }
   }
@@ -98,17 +64,33 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AuthBloc()..add(const CheckAuthStatusEvent()),
+          create: (context) => AuthBloc(
+            loginUseCase: getIt(),
+            registerUseCase: getIt(),
+            logoutUseCase: getIt(),
+            authRepository: getIt(),
+          )..add(const AuthEvent.checkAuthStatus()),
         ),
-        BlocProvider(create: (context) => CashFlowBloc()),
-        BlocProvider(create: (context) => CategoryBloc()),
+        BlocProvider(
+          create: (context) => TransactionBloc(
+            getTransactionsUseCase: getIt(),
+            addTransactionUseCase: getIt(),
+            deleteTransactionUseCase: getIt(),
+            getCashFlowSummaryUseCase: getIt(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => CategoryBloc(
+            getCategoriesUseCase: getIt(),
+          ),
+        ),
       ],
       child: MaterialApp(
         title: 'Cash Flow Manager',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.light,
         darkTheme: AppTheme.dark,
-        themeMode: kIsWeb ? ThemeMode.light : (_isDarkMode ? ThemeMode.dark : ThemeMode.light),
+        themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
         initialRoute: AppRouter.splash,
         onGenerateRoute: AppRouter.generateRoute,
       ),

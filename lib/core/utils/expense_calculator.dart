@@ -1,9 +1,9 @@
-import 'package:cash_flow/domain/entities/transaction.dart';
-import 'package:cash_flow/domain/entities/category.dart';
+import 'package:cash_flow/features/transactions/model/transaction_model.dart';
+import 'package:cash_flow/features/categories/model/category_model.dart';
 
 class ExpenseCalculator {
   static Map<String, double> calculateCategoryBreakdown({
-    required List<Transaction> transactions,
+    required List<TransactionModel> transactions,
     required DateTime monthStart,
     required DateTime monthEnd,
   }) {
@@ -23,7 +23,7 @@ class ExpenseCalculator {
 
   static List<CategoryExpense> getCategoryExpenses({
     required Map<String, double> breakdown,
-    required List<Category> categories,
+    required List<CategoryModel> categories,
     required TransactionType type,
   }) {
     final filteredCategories = categories.where((c) => c.type == type).toList();
@@ -49,7 +49,7 @@ class ExpenseCalculator {
 }
 
 class CategoryExpense {
-  final Category category;
+  final CategoryModel category;
   final double amount;
 
   CategoryExpense({

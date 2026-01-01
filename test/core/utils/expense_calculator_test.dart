@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:cash_flow/core/utils/expense_calculator.dart';
-import 'package:cash_flow/domain/entities/transaction.dart';
+import 'package:cash_flow/features/transactions/model/transaction_model.dart';
 import '../../helpers/test_helpers.dart';
 
 void main() {
@@ -166,15 +166,15 @@ void main() {
     test('calculateTotalExpenses should sum all category expenses', () {
       final expenses = [
         CategoryExpense(
-          category: TestHelpers.createCategory(name: 'Transport'),
+          category: TestHelpers.createCategory(id: 'transport', name: 'Transport'),
           amount: 100.0,
         ),
         CategoryExpense(
-          category: TestHelpers.createCategory(name: 'Food'),
+          category: TestHelpers.createCategory(id: 'food', name: 'Food'),
           amount: 200.0,
         ),
         CategoryExpense(
-          category: TestHelpers.createCategory(name: 'Bills'),
+          category: TestHelpers.createCategory(id: 'bills', name: 'Bills'),
           amount: 150.0,
         ),
       ];

@@ -68,13 +68,13 @@ class NumberToWords {
     
     if (dollars >= 1000000) {
       final millions = dollars ~/ 1000000;
-      result += _convertHundreds(millions) + ' million ';
+      result += '${_convertHundreds(millions)} million ';
       dollars %= 1000000;
     }
     
     if (dollars >= 1000) {
       final thousands = dollars ~/ 1000;
-      result += _convertHundreds(thousands) + ' thousand ';
+      result += '${_convertHundreds(thousands)} thousand ';
       dollars %= 1000;
     }
     
@@ -91,7 +91,7 @@ class NumberToWords {
     String result = '';
     
     if (number >= 100) {
-      result += ones[number ~/ 100] + ' hundred ';
+      result += '${ones[number ~/ 100]} hundred ';
       number %= 100;
     }
     
@@ -101,7 +101,7 @@ class NumberToWords {
       } else {
         result += tens[number ~/ 10];
         if (number % 10 > 0) {
-          result += '-' + ones[number % 10];
+          result += '-${ones[number % 10]}';
         }
       }
     }

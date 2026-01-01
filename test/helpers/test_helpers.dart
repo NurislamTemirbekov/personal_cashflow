@@ -1,13 +1,13 @@
-import 'package:cash_flow/domain/entities/transaction.dart';
-import 'package:cash_flow/domain/entities/category.dart';
-import 'package:cash_flow/domain/entities/user.dart';
-import 'package:cash_flow/domain/entities/cash_flow_summary.dart';
+import 'package:cash_flow/features/transactions/model/transaction_model.dart';
+import 'package:cash_flow/features/categories/model/category_model.dart';
+import 'package:cash_flow/features/auth/model/user_model.dart';
+import 'package:cash_flow/features/transactions/model/cash_flow_summary_model.dart';
 import 'package:uuid/uuid.dart';
 
 class TestHelpers {
   static const uuid = Uuid();
 
-  static Transaction createTransaction({
+  static TransactionModel createTransaction({
     String? id,
     double? amount,
     String? description,
@@ -16,7 +16,7 @@ class TestHelpers {
     TransactionType? type,
     String? userId,
   }) {
-    return Transaction(
+    return TransactionModel(
       id: id ?? uuid.v4(),
       amount: amount ?? 100.0,
       description: description ?? 'Test Transaction',
@@ -28,13 +28,13 @@ class TestHelpers {
     );
   }
 
-  static Category createCategory({
+  static CategoryModel createCategory({
     String? id,
     String? name,
     String? icon,
     TransactionType? type,
   }) {
-    return Category(
+    return CategoryModel(
       id: id ?? 'test_category',
       name: name ?? 'Test Category',
       icon: icon ?? '💼',
@@ -43,12 +43,12 @@ class TestHelpers {
     );
   }
 
-  static User createUser({
+  static UserModel createUser({
     String? id,
     String? username,
     String? avatarPath,
   }) {
-    return User(
+    return UserModel(
       id: id ?? 'test_user',
       username: username ?? 'testuser',
       avatarPath: avatarPath,
@@ -56,13 +56,13 @@ class TestHelpers {
     );
   }
 
-  static CashFlowSummary createCashFlowSummary({
+  static CashFlowSummaryModel createCashFlowSummary({
     double? totalIncome,
     double? totalExpenses,
     DateTime? periodStart,
     DateTime? periodEnd,
   }) {
-    return CashFlowSummary.create(
+    return CashFlowSummaryModel.create(
       totalIncome: totalIncome ?? 5000.0,
       totalExpenses: totalExpenses ?? 3000.0,
       periodStart: periodStart ?? DateTime(2025, 1, 1),

@@ -1,5 +1,5 @@
 name: cash_flow
-description: "Personal finance management app with Telegram Mini App support"
+description: "Personal finance management app"
 publish_to: 'none'
 
 version: 1.0.0+1
@@ -28,16 +28,19 @@ dependencies:
   printing: ^5.14.2
   pdf: ^3.11.3
   signature: ^5.4.0
-  telegram_web_app: ^0.3.3
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
   bloc_test: ^10.0.0
-  mockito: ^5.5.0
-  build_runner: ^2.7.1
+  mockito: ^5.4.6
+  build_runner: ^2.4.13
   flutter_launcher_icons: ^0.13.1
+  freezed: ^2.5.7
+  json_serializable: ^6.8.0
 
 flutter:
   uses-material-design: true

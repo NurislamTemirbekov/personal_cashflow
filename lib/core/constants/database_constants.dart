@@ -1,6 +1,6 @@
 class DatabaseConstants {
   static const String databaseName = 'cash_flow.db';
-  static const int databaseVersion = 1;
+  static const int databaseVersion = 2;
   static const String tableUser = 'users';
   static const String tableTransactions = 'transactions';
   static const String tableCategories = 'categories';
@@ -23,5 +23,14 @@ class DatabaseConstants {
   static const String columnCategoryCreatedAt = 'created_at';
   static const String typeIncome = 'income';
   static const String typeExpense = 'expense';
+  
+  static const String tableMonthlyReports = 'monthly_reports';
+  static const String columnReportId = 'id';
+  static const String columnReportUserId = 'user_id';
+  static const String columnReportMonth = 'month';
+  static const String columnReportYear = 'year';
+  static const String columnReportData = 'report_data';
+  static const String columnReportPdfPath = 'pdf_path';
+  static const String columnReportCreatedAt = 'created_at';
 }
   

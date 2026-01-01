@@ -1,33 +1,37 @@
 import 'package:intl/intl.dart';
 
-class DateFormatter { 
-
-  static String formatDate (DateTime date) { 
+class DateFormatter {
+  static String formatDate(DateTime date) {
     return DateFormat('MMM dd,yyyy').format(date);
   }
-  static String formatDateTime (DateTime date) { 
+
+  static String formatDateTime(DateTime date) {
     return DateFormat('MMM dd, yyyy \'at\' hh:mm a').format(date);
   }
 
-  static String formatDateForDatabase (DateTime date) {
+  static String formatDateForDatabase(DateTime date) {
     return DateFormat('yyyy-MM-dd').format(date);
   }
-  static String formatMonthYear (DateTime date) {
+
+  static String formatMonthYear(DateTime date) {
     return DateFormat('MMMM yyyy').format(date);
   }
-  static String formatDayName (DateTime date) { 
+
+  static String formatDayName(DateTime date) {
     return DateFormat('EEEE').format(date);
   }
-  static String formatTime (DateTime date) {
+
+  static String formatTime(DateTime date) {
     return DateFormat('hh:mm a').format(date);
   }
 
-  static bool isToday (DateTime date) { 
-    final now =  DateTime.now();
+  static bool isToday(DateTime date) {
+    final now = DateTime.now();
     return date.year == now.year &&
-     date.month == now.month &&
-     date.day == now.day;
+        date.month == now.month &&
+        date.day == now.day;
   }
+
   static bool isThisWeek(DateTime date) {
     final now = DateTime.now();
     final weekStart = now.subtract(Duration(days: now.weekday - 1));
@@ -51,6 +55,29 @@ class DateFormatter {
     } catch (e) {
       return null;
     }
+  }
+
+  static bool isEndOfMonth([DateTime? date]) {
+    final checkDate = date ?? DateTime.now();
+    final lastDayOfMonth = getEndOfMonth(checkDate);
+    final daysUntilEnd = lastDayOfMonth.difference(checkDate).inDays;
+    return daysUntilEnd <= 2;
+  }
+
+  static bool isLastDayOfMonth([DateTime? date]) {
+    final checkDate = date ?? DateTime.now();
+    final lastDayOfMonth = getEndOfMonth(checkDate);
+    return checkDate.year == lastDayOfMonth.year &&
+           checkDate.month == lastDayOfMonth.month &&
+           checkDate.day == lastDayOfMonth.day;
+  }
+
+  static bool canGenerateReportForMonth(DateTime month) {
+    return true;
+  }
+
+  static bool canDownloadReport() {
+    return true;
   }
 
 }
